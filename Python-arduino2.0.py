@@ -8,8 +8,9 @@ baudrate = 9600
 max_points = 100   
 
 ser = serial.Serial(port, baudrate)
-plt.ion() 
-data = deque([0]*max_points, maxlen=max_points) # Maakt een soort schuivende array met data (deque = dubbel ended queue), dus een soort snelle append/pop(0)
+plt.ion()
+data = deque() # Voor geheugen op de t as
+# data = deque([0]*max_points, maxlen=max_points) # Voor updatende t as # Maakt een soort schuivende array met data (deque = dubbel ended queue), dus een soort snelle append/pop(0)
 fig, ax = plt.subplots()
 line, = ax.plot(data)
 ax.set_ylim(0, 50)
