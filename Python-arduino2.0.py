@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from collections import deque
 
 
-port = 'COM3'      
+port = 'COM6'      
 baudrate = 9600
 max_points = 100   
 
@@ -12,11 +12,11 @@ plt.ion()
 data = deque([0]*max_points, maxlen=max_points) # Maakt een soort schuivende array met data (deque = dubbel ended queue), dus een soort snelle append/pop(0)
 fig, ax = plt.subplots()
 line, = ax.plot(data)
-ax.set_ylim(0, 4095)
+ax.set_ylim(0, 50)
 ax.set_title("Sensorwaarde LIVE")
 ax.set_xlabel("Samples")
-ax.set_ylabel("Bit waarde")
-
+ax.set_ylabel("Afstand (cm)")
+ax.axhline(y=25, color='r', linestyle='--')  # rode stippellijn op y=25
 try:
     while True:
         if ser.in_waiting > 0:
